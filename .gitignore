@@ -1,2 +1,7 @@
 Public
 Uploads
+upload
+*.jpg
+*.npg
+*.gif
+*.bmp
