@@ -1,0 +1,18 @@
+[ 2018-04-14T19:15:45+08:00 ] 127.0.0.1 /index.php/Admin/Goods/lst/p/5.html
+ERR: syntax error, unexpected '下架' (T_STRING)
+
+[ 2018-04-14T19:16:30+08:00 ] 127.0.0.1 /index.php/Admin/Goods/lst/p/5.html
+ERR: syntax error, unexpected '下架' (T_STRING)
+
+[ 2018-04-14T20:55:28+08:00 ] 127.0.0.1 /index.php/Admin/Goods/lst
+ERR: syntax error, unexpected 'echo' (T_ECHO)
+
+[ 2018-04-14T20:56:12+08:00 ] 127.0.0.1 /index.php/Admin/Goods/lst
+ERR: syntax error, unexpected ')'
+
+[ 2018-04-14T20:56:15+08:00 ] 127.0.0.1 /index.php/Admin/Goods/lst
+ERR: syntax error, unexpected ')'
+
+[ 2018-04-14T20:56:27+08:00 ] 127.0.0.1 /index.php/Admin/Goods/lst
+ERR: syntax error, unexpected 'echo' (T_ECHO)
+

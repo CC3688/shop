@@ -1,0 +1,27 @@
+[ 2018-04-15T10:35:58+08:00 ] 127.0.0.1 /index.php/Admin/Goods/lst?goods_name=&start_price=&end_price=&is_on_sale=-1&is_delete=-1&odby=id_asc
+ERR: syntax error, unexpected '}'
+
+[ 2018-04-15T11:41:33+08:00 ] 127.0.0.1 /index.php/Admin/Goods/lst
+ERR: _STORAGE_WRITE_ERROR_:./Application/Runtime/Cache/Admin/12cf6a5c74297688873998de0720405d.php
+
+[ 2018-04-15T20:05:44+08:00 ] 127.0.0.1 /index.php/Admin/Goods/__PUBLIC
+ERR: 非法操作:__PUBLIC
+
+[ 2018-04-15T20:06:00+08:00 ] 127.0.0.1 /index.php/Admin/Goods/__PUBLIC
+ERR: 非法操作:__PUBLIC
+
+[ 2018-04-15T20:07:14+08:00 ] 127.0.0.1 /index.php/Admin/Goods/__PUBLIC
+ERR: 非法操作:__PUBLIC
+
+[ 2018-04-15T20:07:46+08:00 ] 127.0.0.1 /index.php/Admin/Goods/lst
+ERR: syntax error, unexpected '/'
+
+[ 2018-04-15T20:09:16+08:00 ] 127.0.0.1 /index.php/Admin/Goods/lst
+ERR: syntax error, unexpected '/'
+
+[ 2018-04-15T20:10:20+08:00 ] 127.0.0.1 /index.php/Admin/Goods/lst
+ERR: syntax error, unexpected '/'
+
+[ 2018-04-15T20:17:33+08:00 ] 127.0.0.1 /index.php/Admin/Goods/lst
+ERR: syntax error, unexpected '/'
+
