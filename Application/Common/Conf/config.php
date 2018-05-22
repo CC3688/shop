@@ -15,4 +15,6 @@ return array(
     'IMG_rootPath'          => './Uploads/',
     /******* 修改I函数底层过滤函数 ***********/
     'DEFAULT_FILTER'        =>'trim,removeXSS',
+    /********  MD5时用来复杂化的   *****************/
+    'MD5_KEY'              =>'djajdfoayhqjefah12588409(876hdfay76543cfdery$#%kjdhgam`76dfadfagnnadfa]djfkjaklvnb6^',
 );

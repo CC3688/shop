@@ -45,8 +45,12 @@ class Page{
         $this->totalRows  = $totalRows; //设置总记录数
         $this->listRows   = $listRows;  //设置每页显示行数
         $this->parameter  = empty($parameter) ? $_GET : $parameter;
-        $this->nowPage    = empty($_GET[$this->p]) ? 1 : intval($_GET[$this->p]);
-        $this->nowPage    = $this->nowPage>0 ? $this->nowPage : 1;
+        //先计算总页数
+        $totalPage = ceil($totalRows/$listRows);
+        //判断当前页不能大于最后一页       
+        $this->nowPage    = empty($_GET[$this->p]) ? 1 :max(1, min($totalPage,intval($_GET[$this->p])));
+        
+        //$this->nowPage    = $this->nowPage>0 ? $this->nowPage : 1;
         $this->firstRow   = $this->listRows * ($this->nowPage - 1);
     }
 

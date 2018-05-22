@@ -5,8 +5,10 @@ use Think\Model;
 class GoodsModel extends Model
 {
    
- 
+    //添加的时候,允许的字段
     protected $insertFields = array('goods_name','price','goods_desc','is_on_sale');
+    //修改的时候,允许的字段
+    protected $updateFields = array('id','goods_name','price','goods_desc','is_on_sale');
 
     protected $_validate =array(
         array('goods_name','require','商品名称不能为空!',1),
@@ -19,7 +21,7 @@ class GoodsModel extends Model
     {   //获取当前时间   
         $data['addtime']=time(); 
         //上传logo
-        if($_FILES['logo']['error']==0)
+        if(isset($_FILES['logo']) && $_FILES['logo']['error']==0)
         {   
             $rootPath = C('IMG_rootPath');
             $upload = new \Think\Upload();// 实例化上传类
@@ -121,5 +123,63 @@ class GoodsModel extends Model
             'page' => $pageString,
             'data' => $data,
         );
+    }
+    //在控制器中调用delete方法之前会自动调用
+    protected function _before_delete($options)
+    {
+        //先根据商品的ID取出这件商品的图片路径
+        $logo=$this->field('logo,sm_logo')->find($options['where']['id']);
+        //从配置文件取出图片所在目录
+        $rp = C('IMG_rootPath');
+        //删除图片
+        unlink($rp.$logo['logo']);
+        unlink($rp.$logo['sm_logo']);
+        
+    }
+
+    //
+    protected function _before_update(&$data, $options)
+    {
+
+     //上传logo
+        if($_FILES['logo']['error']==0)
+        {   
+            $rootPath = C('IMG_rootPath');
+            $upload = new \Think\Upload();// 实例化上传类
+            $upload->maxSize   =     (int) C('IMG_maxSize') *1024*1024 ;// 设置附件上传大小
+            $upload->exts      =    C('IMG_exts');// 设置附件上传类型
+            $upload->rootPath  =     $rootPath; // 设置附件上传根目录
+            $upload->savePath  =     'Goods/'; // 设置附件上传（子）目录
+            // 上传文件 
+            $info   =   $upload->upload();
+            
+            if(!$info) {
+                //先把上传失败的错误信息存到模型中,由控制器最终再获取这个错误信息.
+                $this->error = $upload->getError();
+                return FALSE; //返回控制器
+            }else{// 上传成功
+                $logoName=$info['logo']['savepath'].$info['logo']['savename'];
+                //拼出缩略图的文件名
+                $smLogoName=$info['logo']['savepath'].'thumb_'.$info['logo']['savename'];
+                //生成缩略图
+                $image = new \Think\Image();
+                $image->open($rootPath.$logoName);
+                $image->thumb(150,150)->save($rootPath.$smLogoName);
+                //把图片的表单放到表单中
+                $data['logo'] = $logoName;
+                $data['sm_logo'] = $smLogoName;
+                //删除商品的原图片
+                //先根据商品的ID取出这件商品的图片路径
+                $logo=$this->field('logo,sm_logo')->find($options['where']['id']);
+                //从配置文件取出图片所在目录
+                $rp = C('IMG_rootPath');
+                //删除图片
+                unlink($rp.$logo['logo']);
+                unlink($rp.$logo['sm_logo']);
+
+               
+            }
+        }
+
     }
 }
