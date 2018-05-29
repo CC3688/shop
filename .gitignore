@@ -1,8 +1,8 @@
-Public
-Uploads
-upload
+/Public/*
+/Uploads/*
+/upload/*
 *.jpg
 *.npg
 *.gif
 *.bmp
-Application/Runtime
+Application/Runtime/*

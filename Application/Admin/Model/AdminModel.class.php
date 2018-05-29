@@ -10,7 +10,7 @@ class AdminModel extends Model
         array('username','require','用户名不能为空!',1),
         array('password','require','密码不能为空!',1),
         array('chkcode','require','验证码不能为空!',1),
-        array('chkcode','chk_chkcode','验证码不能为空!',1,'callback'),
+        array('chkcode','chk_chkcode','验证码不能为空或不一致!',1,'callback'),
     );
     //添加修改管理员的验证规则
     public function chk_chkcode($code)
